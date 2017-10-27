@@ -4,7 +4,6 @@ import MusicPlayer from "./components/MusicPlayer";
 import Menu from "./components/Menu";
 import Blurb from "./components/Blurb";
 import { Container } from "semantic-ui-react";
-import "./App.css";
 
 class App extends Component {
 	constructor(props) {
@@ -44,16 +43,26 @@ class App extends Component {
 	}
 
 	render() {
+		const {
+			topic,
+			title,
+			text,
+			relatedTopics,
+			images
+		} = this.state.articleSpecification;
 		return (
 			<div
-				className="app"
 				style={{
 					width: this.state.width,
 					minHeight: this.state.height
 				}}
 			>
 				<Menu>
-					<Blurb image={testImage} title={testTitle} text={testText} />
+					{this.state.currentView === "article" ? (
+						<Blurb image={images[0]} title={title} text={text} />
+					) : (
+						<Map />
+					)}
 				</Menu>
 			</div>
 		);
