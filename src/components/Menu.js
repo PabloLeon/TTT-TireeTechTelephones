@@ -33,7 +33,11 @@ export default class MenuExampleTabularOnRight extends Component {
 								onClick={this.handleItemClick}
 							/>
 						))}
-						<Menu.Item name="Map" active={false} onClick={this.displayMap} />
+						<Menu.Item
+							name="Map"
+							active={false}
+							onClick={this.props.displayMap}
+						/>
 					</Menu>
 				</Grid.Column>
 			</Grid>

@@ -3,6 +3,8 @@ import logo from "./logo.svg";
 import MusicPlayer from "./components/MusicPlayer";
 import Menu from "./components/Menu";
 import Blurb from "./components/Blurb";
+import Welcome from "./components/Welcome";
+import TireeMap from "./components/TireeMap";
 import { Container } from "semantic-ui-react";
 
 class App extends Component {
@@ -11,7 +13,7 @@ class App extends Component {
 		this.state = {
 			width: 0,
 			height: 0,
-			currentView: "article",
+			currentView: "welcome",
 			mapSpecification: {
 				center: {
 					latitude: "56.469867",
@@ -34,11 +36,17 @@ class App extends Component {
 				]
 			}
 		};
+		this.handleMapClick = this.handleMapClick.bind(this);
 	}
 	componentDidMount() {
 		this.setState({
 			width: window.innerWidth,
 			height: window.innerHeight
+		});
+	}
+	handleMapClick() {
+		this.setState({
+			currentView: "map"
 		});
 	}
 
@@ -57,13 +65,16 @@ class App extends Component {
 					minHeight: this.state.height
 				}}
 			>
-				<Menu>
-					{this.state.currentView === "article" ? (
+				{this.state.currentView === "welcome" ? (
+					<Welcome />
+				) : this.state.currentView === "article" ? (
+					<Menu displayMap={this.handleMapClick}>
 						<Blurb image={images[0]} title={title} text={text} />
-					) : (
-						<Map />
-					)}
-				</Menu>
+					</Menu>
+				) : (
+					//TODO: add menu app
+					<TireeMap />
+				)}
 			</div>
 		);
 	}
