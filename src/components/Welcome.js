@@ -12,22 +12,37 @@ import Response from "./Response";
 
 const exampleTextBlobs = [
 	{
-		title: "Welcome!",
-		text: "I am Tyra the telephone box!",
-		interaction: { text: "Hi Tyra!" }
+		tyra: {
+			title: "Hello!",
+			text: "I am Tyra the telephone box!"
+		},
+		response: {
+			text: "Hi Tyra!"
+		}
+	},
+	{
+		tyra: {
+			text:
+				"Do you want to know more about this place or listen to a song from here?"
+		},
+		response: {
+			options: [
+				{
+					text: "Yes sure!",
+					action: "SHOW_ITEM"
+				},
+				{
+					text: "Just show me the map!",
+					action: "SHOW_Map"
+				},
+				{
+					text: "I want to listen to a song!",
+					action: "PLAY_SONG"
+				}
+			]
+		}
 	}
 ];
-
-const tyraMessage = text => (
-	<Message size="massive">
-		<Header>{text}</Header>
-	</Message>
-);
-const response = text => (
-	<Message size="massive">
-		<Header>{text}</Header>
-	</Message>
-);
 
 const textDelay = 100;
 const responseDelay = 500;
@@ -36,6 +51,7 @@ class Welcome extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			currentBlobIndex: 0,
 			timeElapsed: 0,
 			displayTyra: false,
 			displayResponse: false
@@ -45,7 +61,14 @@ class Welcome extends React.Component {
 		this.displayNext = this.displayNext.bind(this);
 	}
 	displayNext() {
-		console.log("display next");
+		this.setState({
+			currentBlobIndex: this.state.currentBlobIndex + 1,
+			timeElapsed: 0,
+			displayTyra: false,
+			displayResponse: false
+		});
+
+		this.interval = setInterval(this.tick, 1);
 	}
 	tick() {
 		if (this.state.timeElapsed > responseDelay) {
@@ -74,6 +97,7 @@ class Welcome extends React.Component {
 
 	render() {
 		const { displayTyra, displayResponse } = this.state;
+		const { tyra, response } = exampleTextBlobs[this.state.currentBlobIndex];
 		return (
 			<Modal basic size="large" open>
 				<Grid>
@@ -83,9 +107,9 @@ class Welcome extends React.Component {
 						</Grid.Column>
 						<Grid.Column width={10}>
 							<div>{this.state.timeElapsed}</div>
-							{displayTyra && <TyraMessage text="Hello I'm Tyra" />}
+							{displayTyra && <TyraMessage {...tyra} />}
 							{displayResponse && (
-								<Response text="Hi Tyra!" onAccept={this.displayNext} />
+								<Response {...response} onAccept={this.displayNext} />
 							)}
 						</Grid.Column>
 					</Grid.Row>
