@@ -3,9 +3,11 @@ import logo from "./logo.svg";
 import MusicPlayer from "./components/MusicPlayer";
 import Menu from "./components/Menu";
 import Blurb from "./components/Blurb";
-import Welcome from "./components/Welcome";
+import Dialog from "./components/Dialog";
 import TireeMap from "./components/TireeMap";
 import { Container } from "semantic-ui-react";
+
+//TODO: Instead of Modal everywhere just center and add background
 
 class App extends Component {
 	constructor(props) {
@@ -13,7 +15,7 @@ class App extends Component {
 		this.state = {
 			width: 0,
 			height: 0,
-			currentView: "welcome",
+			currentView: "dialog",
 			mapSpecification: {
 				center: {
 					latitude: "56.469867",
@@ -65,8 +67,8 @@ class App extends Component {
 					minHeight: this.state.height
 				}}
 			>
-				{this.state.currentView === "welcome" ? (
-					<Welcome />
+				{this.state.currentView === "dialog" ? (
+					<Dialog />
 				) : this.state.currentView === "article" ? (
 					<Menu displayMap={this.handleMapClick}>
 						<Blurb image={images[0]} title={title} text={text} />

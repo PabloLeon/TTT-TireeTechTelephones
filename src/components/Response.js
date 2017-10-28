@@ -1,16 +1,26 @@
 import React, { Component } from "react";
-import { Message, Header, Container, Button } from "semantic-ui-react";
+import { Header, Grid, Container, Segment, Button } from "semantic-ui-react";
 
-const Response = ({ title, text, onAccept }) => (
-	<Message>
-		{!!title && <Header>{title}</Header>}
-		<Container>{text}</Container>
-		<Button
-			content="Send"
-			icon="right arrow"
-			labelPosition="right"
-			onClick={onAccept}
-		/>
-	</Message>
-);
+import Typist from "react-typist";
+//TODO: could have button only show when typing done
+const Response = ({ text, onAccept }) => {
+	return (
+		<Segment secondary>
+			<Grid.Row>
+				<Grid.Column width={12}>
+					<Typist>{text}</Typist>
+				</Grid.Column>
+				<Grid.Column width={2}>
+					<Button
+						floated="right"
+						content="Send"
+						icon="right arrow"
+						labelPosition="right"
+						onClick={onAccept}
+					/>
+				</Grid.Column>
+			</Grid.Row>
+		</Segment>
+	);
+};
 export default Response;
