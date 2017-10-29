@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import MusicPlayer from "./components/MusicPlayer";
 import Menu from "./components/Menu";
 import Article from "./components/Article";
@@ -9,14 +8,12 @@ import SelectView from "./components/SelectView";
 import HiTyra from "./components/HiTyra";
 import { Container, Grid, Image } from "semantic-ui-react";
 
-//TODO: Instead of Modal everywhere just center and add background
-
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentView: "welcome",
-			tyraDone: true,
+			currentView: "welcome", //"welcome",
+			tyraDone: false,
 			newSession: true,
 			mapSpecification: {
 				center: {
@@ -51,15 +48,13 @@ class App extends Component {
 		console.log("show meeee morrrreee", moreTag);
 	}
 	displayArticle() {
-		console.log("display article");
-		//TODO: If the typing works at some point this should set tyraDone: false
-		this.setState({ currentView: "article", tyraDone: true });
+		this.setState({ currentView: "article", tyraDone: false });
 	}
 	displayMap() {
-		console.log("display map");
+		this.setState({ currentView: "map", tyraDone: false });
 	}
 	displayMusic() {
-		console.log("display music");
+		this.setState({ currentView: "music", tyraDone: false });
 	}
 	getTyraMessage() {
 		switch (this.state.currentView) {
@@ -82,6 +77,25 @@ class App extends Component {
 				tyraMessage: this.state.articleSpecification.topic
 			};
 		}
+		case "music": {
+			return {
+				tyraTitle: "Listen to Music from Tiree",
+				tyraMessage: "Let me play you some music from Tiree."
+			};
+		}
+		case "map": {
+			return {
+				tyraTitle: "Map of Tiree",
+				tyraMessage: "Here is the map!"
+			};
+		}
+		case "selectView": {
+			return {
+				tyraTitle: "What would you like to do?",
+				tyraMessage:
+						"Learn more about this place, listen to music or view the map!"
+			};
+		}
 		default:
 			return { tyraTitle: "", tyraMessage: "no message..." };
 		}
@@ -97,40 +111,55 @@ class App extends Component {
 		const { tyraTitle, tyraMessage } = this.getTyraMessage();
 		return (
 			<div>
-				<Grid>
+				<Grid centered>
 					<Grid.Column width={3}>
 						<Image src={"telebox_filled.svg"} />
 					</Grid.Column>
-					<Grid.Column width={10}>
+					<Grid.Column width={13}>
 						<TyraMessage
 							title={tyraTitle}
 							text={tyraMessage}
 							onDone={() => this.setState({ tyraDone: true })}
 						/>
-						{this.state.tyraDone && this.state.currentView === "welcome" ? (
-							this.state.newSession ? (
-								//TODO: tyraDone should be false if the typing is fixed
-								<HiTyra
-									onAccept={() =>
-										this.setState({ newSession: false, tyraDone: true })}
+						{this.state.tyraDone ? (
+							this.state.currentView === "welcome" ? (
+								this.state.newSession ? (
+									//TODO: tyraDone should be false if the typing is fixed
+									<HiTyra
+										onAccept={() =>
+											this.setState({ newSession: false, tyraDone: false })}
+									/>
+								) : (
+									<SelectView
+										onMap={this.displayMap}
+										onArticle={this.displayArticle}
+										onMusic={this.displayMusic}
+									/>
+								)
+							) : this.state.currentView === "article" ? (
+								<Article
+									image={images[0]}
+									title={title}
+									text={text}
+									relatedTopics={relatedTopics}
+									showMore={this.showMore}
+									onBack={() => this.setState({ currentView: "selectView" })}
 								/>
-							) : (
+							) : this.state.currentView === "map" ? (
+								<TireeMap
+									onBack={() => this.setState({ currentView: "selectView" })}
+								/>
+							) : this.state.currentView === "music" ? (
+								<MusicPlayer
+									onBack={() => this.setState({ currentView: "selectView" })}
+								/>
+							) : this.state.currentView === "selectView" ? (
 								<SelectView
 									onMap={this.displayMap}
 									onArticle={this.displayArticle}
 									onMusic={this.displayMusic}
 								/>
-							)
-						) : this.state.currentView === "article" ? (
-							<Article
-								image={images[0]}
-								title={title}
-								text={text}
-								relatedTopics={relatedTopics}
-								showMore={this.showMore}
-							/>
-						) : this.state.currentView === "map" ? (
-							<TireeMap />
+							) : null
 						) : null}
 					</Grid.Column>
 				</Grid>

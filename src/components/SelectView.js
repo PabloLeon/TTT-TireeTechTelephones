@@ -10,7 +10,7 @@ const SelectView = ({ onArticle, onMap, onMusic }) => {
 						<Header size="small">Show me the article!</Header>
 						<Image
 							onClick={onArticle}
-							src="articlesmall.svg"
+							src="articlebigger.svg"
 							as={Button}
 							size="medium"
 						/>
@@ -23,7 +23,7 @@ const SelectView = ({ onArticle, onMap, onMusic }) => {
 						<Header size="small">I want to listen to some music!</Header>
 						<Image
 							onClick={onMusic}
-							src="phonemusic.svg"
+							src="phonemusicbigger.svg"
 							as={Button}
 							size="medium"
 						/>

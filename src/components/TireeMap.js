@@ -1,17 +1,6 @@
 import React, { Component } from "react";
-import {
-	ComposableMap,
-	ZoomableGroup,
-	Geographies,
-	Geography
-} from "react-simple-maps";
+import { Menu, Image, Segment, Container } from "semantic-ui-react";
 import PropTypes from "prop-types";
-
-const wrapperStyles = {
-	width: "100%",
-	maxWidth: 980,
-	margin: "0 auto"
-};
 
 //marks: points.topojson
 // - name, -place, -other_tags => "natural"=> "peak", "historic" => "ruins", "amenity"=>"bicycle_rental","tourism"=>"hostel",
@@ -26,7 +15,18 @@ const wrapperStyles = {
 
 class TireeMap extends React.Component {
 	render() {
-		return <div>Map</div>;
+		return [
+			<Segment secondary>
+				<Image src="map.svg" size="medium" />
+			</Segment>,
+			<Menu color={"red"} inverted as={Container}>
+				<Menu.Item
+					floated="left"
+					name="Back to Menu"
+					onClick={this.props.onBack}
+				/>
+			</Menu>
+		];
 	}
 }
 
