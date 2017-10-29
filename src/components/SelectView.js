@@ -1,21 +1,33 @@
 import React from "react";
-import { Segment, Grid, Image, Header } from "semantic-ui-react";
+import { Segment, Grid, Button, Image, Header } from "semantic-ui-react";
 
-const SelectView = ({ options, selectOption }) => {
+const SelectView = ({ onArticle, onMap, onMusic }) => {
 	return (
 		<Segment secondary>
-			<Grid columns={options.length}>
+			<Grid columns={3}>
 				<Grid.Row centered verticalAlign>
-					{options.map(item => (
-						<Grid.Column>
-							<Header size="small">{item.text}</Header>
-							<Image
-								onClick={selectOption(item.action)}
-								src={item.src}
-								size="medium"
-							/>
-						</Grid.Column>
-					))}
+					<Grid.Column>
+						<Header size="small">Show me the article!</Header>
+						<Image
+							onClick={onArticle}
+							src="articlesmall.svg"
+							as={Button}
+							size="medium"
+						/>
+					</Grid.Column>
+					<Grid.Column>
+						<Header size="small">Show me the map!</Header>
+						<Image onClick={onMap} src="map.svg" as={Button} size="medium" />
+					</Grid.Column>
+					<Grid.Column>
+						<Header size="small">I want to listen to some music!</Header>
+						<Image
+							onClick={onMusic}
+							src="phonemusic.svg"
+							as={Button}
+							size="medium"
+						/>
+					</Grid.Column>
 				</Grid.Row>
 			</Grid>
 		</Segment>

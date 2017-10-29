@@ -6,7 +6,8 @@ const TyraMessage = ({ title, text, onDone }) => (
 	<Segment raised inverted color="red">
 		{!!title && <Header>{title}</Header>}
 		<Container>
-			<Typist onTypingDone={onDone}>{text}</Typist>
+			{text}
+			{/* <Typist onTypingDone={onDone}>{text}</Typist> */}
 		</Container>
 	</Segment>
 );
