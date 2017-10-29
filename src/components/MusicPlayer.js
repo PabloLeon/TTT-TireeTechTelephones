@@ -68,7 +68,6 @@ class MusicPlayer extends Component {
 						placeholder="Select a Song!"
 						options={songs.map((item, idx) => (
 							<Dropdown.Item
-								simple
 								key={item.src}
 								label={`${item.artist.name} sings ${item.artist.song}`}
 								onClick={() => this.setState({ currentSongIdx: idx })}
@@ -76,10 +75,12 @@ class MusicPlayer extends Component {
 						))}
 					/>
 					<Divider />
-					{currentSong && <p>{currentSong.description}</p>}
+					{currentSong ? <p>{currentSong.description}</p> : null}
 				</Grid.Column>
 				<Grid.Column as={Container} width={6}>
-					<Image src="musicplayer2.svg" />
+					<Grid.Row>
+						<Image src="musicplayer2.svg" />
+					</Grid.Row>
 					{currentSong && (
 						<ReactAudioPlayer src={currentSrc} controls autoPlay />
 					)}

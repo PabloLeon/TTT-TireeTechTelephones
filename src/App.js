@@ -62,13 +62,13 @@ class App extends Component {
 			if (this.state.newSession) {
 				return {
 					tyraTitle: "Hello!",
-					tyraMessage: "I am Tyra the telephone box!"
+					tyraMessage: "I am Tyra the telephone box..."
 				};
 			}
 			return {
 				tyraTitle: "Hi there!",
 				tyraMessage:
-						"Do you want to know more about this place or listen to a song from here?"
+						"Do you want to learn more about Tiree, explore the map, or listen to a local song?"
 			};
 		}
 		case "article": {
@@ -79,13 +79,11 @@ class App extends Component {
 		}
 		case "music": {
 			return {
-				tyraTitle: "Listen to Music from Tiree",
 				tyraMessage: "Let me play you some music from Tiree."
 			};
 		}
 		case "map": {
 			return {
-				tyraTitle: "Map of Tiree",
 				tyraMessage: "Here is the map!"
 			};
 		}
@@ -93,7 +91,7 @@ class App extends Component {
 			return {
 				tyraTitle: "What would you like to do?",
 				tyraMessage:
-						"Learn more about this place, listen to music or view the map!"
+						"Learn more about this place, listen to music or view the map..."
 			};
 		}
 		default:

@@ -7,7 +7,7 @@ const SelectView = ({ onArticle, onMap, onMusic }) => {
 			<Grid columns={3}>
 				<Grid.Row centered verticalAlign>
 					<Grid.Column>
-						<Header size="small">Show me the article!</Header>
+						<Header size="small">Learn more!</Header>
 						<Image
 							onClick={onArticle}
 							src="articlebigger.svg"
@@ -20,7 +20,7 @@ const SelectView = ({ onArticle, onMap, onMusic }) => {
 						<Image onClick={onMap} src="map.svg" as={Button} size="medium" />
 					</Grid.Column>
 					<Grid.Column>
-						<Header size="small">I want to listen to some music!</Header>
+						<Header size="small">I want to listen to music!</Header>
 						<Image
 							onClick={onMusic}
 							src="phonemusicbigger.svg"
