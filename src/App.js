@@ -22,12 +22,10 @@ class App extends Component {
 				},
 				zoom: 3
 			},
-			articleSpecification: {
-				id: 1,
+			mainArticleSpecification: {
 				title: "A great blurb",
 				topic: "A blurb about blurbiness",
 				text: "Text about this blurb",
-				relatedTopics: ["sea", "history", "seals"],
 				images: [
 					{
 						src: "exampleImage.jpg",
@@ -35,7 +33,45 @@ class App extends Component {
 						tags: ["beach", "seals"]
 					}
 				]
-			}
+			},
+			relatedArticles: [
+				{
+					title: "Seals are great",
+					topic: "Seals",
+					text: "Text about seals",
+					images: [
+						{
+							src: "exampleImage.jpg",
+							description: "An impressive seal",
+							tags: ["beach", "seals"]
+						}
+					]
+				},
+				{
+					title: "The sea is great",
+					topic: "Sea",
+					text: "Text about the sea",
+					images: [
+						{
+							src: "exampleImage.jpg",
+							description: "The impressive sea",
+							tags: ["beach", "sea"]
+						}
+					]
+				},
+				{
+					title: "History is great",
+					topic: "History",
+					text: "Text about history",
+					images: [
+						{
+							src: "exampleImage.jpg",
+							description: "The impressive history",
+							tags: ["beach", "history"]
+						}
+					]
+				}
+			]
 		};
 		this.getTyraMessage = this.getTyraMessage.bind(this);
 		this.displayArticle = this.displayArticle.bind(this);
@@ -43,9 +79,16 @@ class App extends Component {
 		this.displayMap = this.displayMap.bind(this);
 		this.showMore = this.showMore.bind(this);
 	}
+	componentDidMount() {
+		console.log("Im moooooooooooooooooooooooooooooooooounted");
+		//initially load 4 articles from Janie
+	}
 
-	showMore(moreTag) {
-		console.log("show meeee morrrreee", moreTag);
+	showMore(moreIdx) {
+		console.log("show meeee morrrreee", moreIdx);
+		this.setState({
+			mainArticleSpecification: this.state.relatedArticles[moreIdx]
+		});
 	}
 	displayArticle() {
 		this.setState({ currentView: "article", tyraDone: false });
@@ -73,8 +116,8 @@ class App extends Component {
 		}
 		case "article": {
 			return {
-				tyraTitle: this.state.articleSpecification.title,
-				tyraMessage: this.state.articleSpecification.topic
+				tyraTitle: this.state.mainArticleSpecification.title,
+				tyraMessage: this.state.mainArticleSpecification.topic
 			};
 		}
 		case "music": {
@@ -100,12 +143,11 @@ class App extends Component {
 	}
 
 	render() {
-		const {
-			title,
-			text,
-			relatedTopics,
-			images
-		} = this.state.articleSpecification;
+		const { title, text, images, topic } = this.state.mainArticleSpecification;
+		const relatedTopics = this.state.relatedArticles.map((item, index) => ({
+			index: index,
+			topic: item.topic
+		}));
 		const { tyraTitle, tyraMessage } = this.getTyraMessage();
 		return (
 			<div>
