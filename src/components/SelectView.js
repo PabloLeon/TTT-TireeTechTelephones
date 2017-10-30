@@ -5,7 +5,7 @@ const SelectView = ({ onArticle, onMap, onMusic }) => {
 	return (
 		<Segment secondary>
 			<Grid columns={3}>
-				<Grid.Row centered verticalAlign>
+				<Grid.Row centered>
 					<Grid.Column>
 						<Header size="small">Learn more!</Header>
 						<Image

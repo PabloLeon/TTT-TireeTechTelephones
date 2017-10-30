@@ -8,6 +8,11 @@ import SelectView from "./components/SelectView";
 import HiTyra from "./components/HiTyra";
 import { Container, Grid, Image } from "semantic-ui-react";
 
+const BACKEND_IP = "192.168.112.146:5000/post/88888";
+const testData = "testData.json";
+//Janie IP: 192.168.112.146
+// :5000/posts/88888
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -78,12 +83,79 @@ class App extends Component {
 		this.displayMusic = this.displayMusic.bind(this);
 		this.displayMap = this.displayMap.bind(this);
 		this.showMore = this.showMore.bind(this);
+		this.getData = this.getData.bind(this);
+	}
+
+	getData() {
+		fetch(testData)
+			.then(function(response) {
+				console.log("got something");
+				return response.json();
+			})
+			.then(data => {
+				//console.log(data["main"]);
+				console.log("image", data["main"].frasan_web_image_str);
+				this.setState({
+					mainArticleSpecification: {
+						title: data["main"].frasan_township_str[0],
+						text: data["main"].frasan_description,
+						topic: data["main"].frasan_scale_str[0],
+						images: [
+							{
+								src: "http:" + data["main"].frasan_web_image_str[0].slice(4)
+							}
+						]
+					},
+					relatedArticles: [
+						{
+							title: data["related1"].frasan_township_str[0],
+							text: data["related1"].frasan_description,
+							topic: data["related1"].frasan_scale_str[0],
+							images: [
+								{
+									src:
+										"http:" + data["related1"].frasan_web_image_str[0].slice(4)
+								}
+							]
+						},
+						{
+							title: data["related2"].frasan_township_str[0],
+							text: data["related2"].frasan_description,
+							topic: data["related2"].frasan_scale_str[0],
+							images: [
+								{
+									src:
+										"http:" + data["related2"].frasan_web_image_str[0].slice(4)
+								}
+							]
+						},
+						{
+							title: data["related3"].frasan_township_str[0],
+							text: data["related3"].frasan_description,
+							topic: data["related3"].frasan_scale_str[0],
+							images: [
+								{
+									src:
+										"http:" + data["related3"].frasan_web_image_str[0].slice(4)
+								}
+							]
+						}
+					]
+				});
+			})
+			.catch(function(error) {
+				console.log("got an error", error);
+			});
 	}
 	componentDidMount() {
 		console.log("Im moooooooooooooooooooooooooooooooooounted");
 		//initially load 4 articles from Janie
-	}
 
+		//Janie IP: 192.168.112.146
+		// :5000/posts/88888
+		//BACKEND_IP || testData
+		this.getData();
+	}
 	showMore(moreIdx) {
 		console.log("show meeee morrrreee", moreIdx);
 		this.setState({
@@ -116,8 +188,11 @@ class App extends Component {
 		}
 		case "article": {
 			return {
-				tyraTitle: this.state.mainArticleSpecification.title,
-				tyraMessage: this.state.mainArticleSpecification.topic
+				tyraTitle:
+						"Here is a cool fact about " +
+						this.state.mainArticleSpecification.title,
+				tyraMessage:
+						"This is a great " + this.state.mainArticleSpecification.topic
 			};
 		}
 		case "music": {

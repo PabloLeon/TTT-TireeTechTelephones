@@ -1,0 +1,70 @@
+{
+  "main": {
+    "_version_": 1582619369717891072,
+    "frasan_description":
+      "First pages from Ruaig Public School Log Book, 14th January 1919 to 26th June 1953. The Headteacher was responsible for keeping a daily log and writes that Ruaig School was destroyed by fire on the 6th of December 1918 and that classes resumed in the Congregational chapel on the 14th of January.\n",
+    "frasan_scale": ["building"],
+    "frasan_scale_str": ["building"],
+    "frasan_township": ["ruaig"],
+    "frasan_township_str": ["ruaig"],
+    "frasan_web_image": [
+      "<a href=\"\"http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_ruaig.jpg\"\"><img class=\"\"alignright size-medium wp-image\"\" src=\"\"http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_ruaig.jpg\"\" alt=\"\"school_log_ruaig.jpg\"\" /></a>"
+    ],
+    "frasan_web_image_str": [
+      "http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_ruaig.jpg"
+    ],
+    "id": "67871"
+  },
+  "related1": {
+    "_pronamic_google_maps_latitude": [56.533192],
+    "_version_": 1582619371213160448,
+    "frasan_description":
+      "First pages from Ruaig Public School Log Book, 14th January 1919 to 26th June 1953. The Headteacher was responsible for keeping a daily log and writes that Ruaig School was destroyed by fire on the 6th of December 1918 and that classes resumed in the Congregational chapel on the 14th of January.\n",
+    "frasan_publish": [true],
+    "frasan_scale": ["building"],
+    "frasan_scale_str": ["building"],
+    "frasan_township": ["ruaig"],
+    "frasan_township_str": ["ruaig"],
+    "frasan_web_image": [
+      "<a href=\"\"http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_ruaig.jpg\"\"><img class=\"\"alignright size-medium wp-image\"\" src=\"\"http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_ruaig.jpg\"\" alt=\"\"school_log_ruaig.jpg\"\" /></a>"
+    ],
+    "frasan_web_image_str": [
+      "http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_ruaig.jpg"
+    ],
+    "id": "55621"
+  },
+  "related2": {
+    "_version_": 1582619371023368192,
+    "frasan_description":
+      "Extract from the head teacher`s log book for Scarinish Public School on 27th December 1898 to 13th January 1899. Attendance was low because of stormy weather, and the school was closed for the old New Year. Tiree`s winter gales still occasionally result in the school being closed.\n",
+    "frasan_scale": ["building"],
+    "frasan_scale_str": ["building"],
+    "frasan_township": ["scarinish"],
+    "frasan_township_str": ["scarinish"],
+    "frasan_web_image": [
+      "<a href=\"\"http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_scarinish.jpg\"\"><img class=\"\"alignright size-medium wp-image\"\" src=\"\"http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_scarinish-494x300.jpg\"\" alt=\"\"school_log_scarinish.jpg\"\" /></a>"
+    ],
+    "frasan_web_image_str": [
+      "http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_scarinish.jpg"
+    ],
+    "id": "67862"
+  },
+  "related3": {
+    "_pronamic_google_maps_latitude": [56.499603],
+    "_version_": 1582619371269783552,
+    "frasan_description":
+      "Extract from the head teacher`s log book for Scarinish Public School on 27th December 1898 to 13th January 1899. Attendance was low because of stormy weather, and the school was closed for the old New Year. Tiree`s winter gales still occasionally result in the school being closed.\n",
+    "frasan_publish": [true],
+    "frasan_scale": ["building"],
+    "frasan_scale_str": ["building"],
+    "frasan_township": ["scarinish"],
+    "frasan_township_str": ["scarinish"],
+    "frasan_web_image": [
+      "<a href=\"\"http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_scarinish.jpg\"\"><img class=\"\"alignright size-medium wp-image\"\" src=\"\"http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_scarinish-494x300.jpg\"\" alt=\"\"school_log_scarinish.jpg\"\" /></a>"
+    ],
+    "frasan_web_image_str": [
+      "http//www.aniodhlann.org.uk/wp-content/uploads/frasan/school_log_scarinish.jpg"
+    ],
+    "id": "50937"
+  }
+}
